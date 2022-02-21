@@ -11,7 +11,19 @@ class TicTacToeNode
   end
 
   def losing_node?(evaluator)
-    
+    if board.over?
+      if board.winner == :o
+        true
+      else
+        false
+      end
+    else
+      if evaluator == :x &&
+
+      elsif evaluator == :o && 
+
+      end
+    end
   end
 
   def winning_node?(evaluator)
@@ -25,10 +37,13 @@ class TicTacToeNode
     newNode = TicTacToeNode.new(board_dup, next_mover_mark)
     (0...newNode.board.length).each do |i|
       (0...newNode.board[0].length).each do |j|
-        board[i][j] = newNode.next_mover_mark if board.empty?([i, j])
-        prev_move_pos = [i, j]
+        if board.empty?([i, j])
+          board[i][j] = newNode.next_mover_mark 
+          arr.push([i, j])
+          prev_move_pos = [i, j]
+        end
       end
     end
-
+    arr
   end
 end
